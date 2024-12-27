@@ -1,0 +1,47 @@
+:host {
+    padding: 30px 15px;
+    display: flex;
+}
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 15px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    animation: grow 2s ease;
+
+    mat-card-header {
+        justify-content: center;
+
+        mat-card-title {
+            font-size: 25px;
+            margin-bottom: 16px;
+        }
+    }
+
+    mat-card-content {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 0;
+        height: 100%;
+    }
+
+    mat-card-actions {
+        display: flex;
+        text-align: center;
+
+        > div {
+            order: 1;
+        }
+
+        .monthly {
+            order: 0;
+        }
+
+        .planType {
+            margin-top: 5px;
+            display: inline-block;
+        }
+    }
+}

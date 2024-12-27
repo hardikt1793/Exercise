@@ -1,0 +1,13 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button [routerLink]="'/home'" routerLinkActive="mat-raised-button">Home</button>
+
+    <button mat-button [routerLink]="'/product-subscription'" routerLinkActive="mat-raised-button">Product Subscription</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Page content -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
