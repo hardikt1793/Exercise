@@ -1,16 +1,41 @@
 <mat-card *ngFor="let product of products">
-    <mat-card-header>
-        <mat-card-title>{{product.name}}</mat-card-title>
-    </mat-card-header>
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+  </mat-card-header>
 
-    <mat-card-content>
-        <p *ngFor="let feature of product.features">{{feature}}</p>
-    </mat-card-content>
+  <mat-card-content>
+    <p *ngFor="let feature of product.features">{{ feature }}</p>
+  </mat-card-content>
 
-    <mat-card-actions>
-        <div *ngFor="let plan of product.plans" [ngClass]="{monthly: plan.paymentInterval === 'MONTH' || plan.interval === 'MONTH'}">
-            <button (click)="selectedProduct(product, plan.paymentInterval || plan.interval)" mat-raised-button color="primary">Buy {{plan.paymentInterval === 'MONTH' || plan.interval === 'MONTH' ? 'Monthly' : 'Yearly'}}</button>
-            <span class="planType">${{plan.priceCents / 100 + '/'}}{{plan.paymentInterval === 'MONTH' || plan.interval === 'MONTH' ? 'month' : 'year'}}</span>
-        </div>
-    </mat-card-actions>
+  <mat-card-actions>
+    <div
+      *ngFor="let plan of product.plans"
+      [ngClass]="{
+        monthly: plan.paymentInterval === 'MONTH' || plan.interval === 'MONTH'
+      }"
+    >
+      <button
+        (click)="
+          selectedProduct(product, plan.paymentInterval || plan.interval)
+        "
+        mat-raised-button
+        color="primary"
+      >
+        Buy
+        {{
+          plan.paymentInterval === "MONTH" || plan.interval === "MONTH"
+            ? "Monthly"
+            : "Yearly"
+        }}
+      </button>
+      <span class="planType"
+        >${{ plan.priceCents / 100 + "/"
+        }}{{
+          plan.paymentInterval === "MONTH" || plan.interval === "MONTH"
+            ? "month"
+            : "year"
+        }}</span
+      >
+    </div>
+  </mat-card-actions>
 </mat-card>

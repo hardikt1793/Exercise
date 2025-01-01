@@ -1,15 +1,27 @@
 <mat-dialog-content>
-    <h2>{{data.product.name}}</h2>
+  <h2>{{ data.product?.name }}</h2>
 
-    <ul>
-        <li *ngFor="let feature of data.product.features">{{feature}}</li>
-    </ul>
+  <ul>
+    <li *ngFor="let feature of data.product?.features">{{ feature }}</li>
+  </ul>
 
-    <ng-container *ngFor="let plan of data.product.plans">
-        <p *ngIf="data.selectedPlan === plan.paymentInterval || data.selectedPlan === plan.interval"><strong>Price: </strong>${{plan.priceCents / 100 + '/'}}{{plan.paymentInterval === 'MONTH' || plan.interval === 'MONTH' ? 'month' : 'year'}}</p>
-    </ng-container>
+  <ng-container *ngFor="let plan of data.product?.plans">
+    <p
+      *ngIf="
+        data.selectedPlan === plan.paymentInterval ||
+        data.selectedPlan === plan.interval
+      "
+    >
+      <strong>Price: </strong>${{ plan.priceCents / 100 + "/"
+      }}{{
+        plan.paymentInterval === "MONTH" || plan.interval === "MONTH"
+          ? "month"
+          : "year"
+      }}
+    </p>
+  </ng-container>
 </mat-dialog-content>
 
 <mat-dialog-actions align="right">
-    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
