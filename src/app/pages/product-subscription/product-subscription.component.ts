@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ProductSubscriptionService } from "src/app/services/product-subscription.service";
 import { MatDialog } from "@angular/material/dialog";
 import { ProductInfoModalComponent } from "src/app/modal/product-info-modal/product-info-modal.component";
+import { Product } from "src/app/models/product.model";
 
 @Component({
   selector: "app-product-subscription",
@@ -10,7 +11,7 @@ import { ProductInfoModalComponent } from "src/app/modal/product-info-modal/prod
 })
 export class ProductSubscriptionComponent implements OnInit {
   // hold the products list
-  products: any[];
+  products: Product[];
 
   constructor(
     private productSubscriptionService: ProductSubscriptionService,
@@ -26,7 +27,7 @@ export class ProductSubscriptionComponent implements OnInit {
    */
   getProductSubscription(): void {
     this.productSubscriptionService.getProductSubscription().subscribe({
-      next: (res: any) => {
+      next: (res: { products: Product[] }) => {
         if (res) {
           this.products = res.products;
         }
@@ -43,7 +44,7 @@ export class ProductSubscriptionComponent implements OnInit {
    * @param product - Selected product details.
    * @param selectedPlan - Selected plan details.
    */
-  selectedProduct(product, selectedPlan): void {
+  selectedProduct(product: Product, selectedPlan: string): void {
     this.dialog.open(ProductInfoModalComponent, {
       autoFocus: false,
       width: "400px",
